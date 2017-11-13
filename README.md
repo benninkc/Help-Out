@@ -1,5 +1,7 @@
 # CS361 Project
 
+Volunteering platform for matching small neighborhood volunteering opportunities with volunteers. Features include the ability to search for volunteer opportunities, to sign up for opportunities, and post volunteer opportunities.
+
 ## Homework 6
 
 | Story | Tasks | Who | Status |
