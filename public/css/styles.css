@@ -1,0 +1,19 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+.tableLinks li {
+	display: inline;
+	padding: 10px;
+}
+
+ul.tableLinks {
+	padding: 0;	
+}
+
+.home li {	
+	padding: 10;
+	display: list-item;
+	list-style-type: circle;
+}
+
