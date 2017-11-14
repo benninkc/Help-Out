@@ -1,6 +1,3 @@
-//Nathan Zimmerman
-//06/10/2017
-
 var express = require('express');
 var mysql = require('./dbcon.js');
 
@@ -21,7 +18,7 @@ app.get('/',function(req,res,next){
   res.render('home');
 });
 
-// Movie page with movie table, add movie form, and remove movie form.
+// Event information
 app.get('/eventInformation',function(req,res,next){
   var context = {};
   var tableData = [];
