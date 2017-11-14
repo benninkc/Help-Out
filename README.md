@@ -19,5 +19,6 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 
 + step one
 + step two
++ step three
 + etc.
 
