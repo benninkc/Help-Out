@@ -15,3 +15,9 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 
 ## Homework 7
 
+## How to Set up this project
+
++ step one
++ step two
++ etc.
+
