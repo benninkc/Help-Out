@@ -17,3 +17,27 @@ ul.tableLinks {
 	list-style-type: circle;
 }
 
+header.jumbotron {
+	background-image: url(/img/group.jpg);
+	background-attachment: fixed;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 300px;
+}
+
+header.jumbotron .nav-header .navbar {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+header.jumbotron .nav-header .navbar .header-btn {
+	position: fixed;
+	right: 0;
+}
+
+#navMain {
+	opacity: 0.8;
+}
