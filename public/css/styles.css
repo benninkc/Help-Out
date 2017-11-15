@@ -11,33 +11,35 @@ ul.tableLinks {
 	padding: 0;	
 }
 
-.home li {	
-	padding: 10;
-	display: list-item;
-	list-style-type: circle;
-}
-
 header.jumbotron {
-	background-image: url(/img/group.jpg);
-	background-attachment: fixed;
+	background-image: url(/img/group3.jpg);
+	background-attachment: scroll;
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	min-height: 300px;
 }
 
-header.jumbotron .nav-header .navbar {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
+header.jumbotron .navbar {
+	
 }
+
 
 header.jumbotron .nav-header .navbar .header-btn {
 	position: fixed;
-	right: 0;
+	right: 10px;
 }
 
 #navMain {
-	opacity: 0.8;
+	opacity: 0.7;
+	
+}
+
+#navElements {
+	position: relative;
+	left: 20%;
+}
+
+#jumboText {
+	padding-top: 20px;
 }
