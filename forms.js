@@ -53,7 +53,7 @@ app.get('/eventInformation',function(req,res,next){
   var tableData = [];
   var query = 'SELECT `eid`, `hid`, `eventdate`, `eventname`,' + 
     '`eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`' +
-    'FROM `events` WHERE `eid` = ?';
+    'FROM `event` WHERE `eid` = ?';
 
   mysql.pool.query(query, [req.body.eid], function(err, rows, fields){
     if(err){
