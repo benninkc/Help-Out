@@ -53,4 +53,8 @@ git clone https://github.com/natez56/CS361Project.git
 4) Type your password for your MySQL user account.
 5) Under database enter the name of the schema you want to access.
 
+--Google Maps JS API--
+1) Follow the guide here: https://developers.google.com/maps/documentation/javascript/get-api-key
+2) Once you have your auth key insert it into the HTML located in the main.handlebars page in the layouts folder.
+
 
