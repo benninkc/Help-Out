@@ -18,7 +18,9 @@ app.get('/',function(req,res,next){
   res.render('home');
 });
 
-
+// Gets sent information from geocode function
+// Generates data to used in the geocode.js function to create a search result.
+// Page
 app.post('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];
@@ -47,7 +49,7 @@ app.post('/locationSearch',function(req,res,next){
 });
 
 
-// Event information
+// Event information (will be used for additional information page)
 app.get('/eventInformation',function(req,res,next){
   var context = {};
   var tableData = [];
