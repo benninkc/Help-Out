@@ -18,6 +18,35 @@ app.get('/',function(req,res,next){
   res.render('home');
 });
 
+
+app.post('/locationSearch',function(req,res,next){
+  var context = {};
+  var tableData = [];
+  //var latitude = req.body.lat;
+  //var longitude = req.body.lng;
+  //console.log(latitude);
+  //console.log(longitude);
+
+  var query = 'SELECT `eventname`, `eventdescription` FROM `events`';
+  mysql.pool.query(query, function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+
+    var data = JSON.stringify(rows);
+    var json = JSON.parse(data);
+
+    for (var key in json) {
+      tableData.push(json[key]);
+    }
+
+    context.table = tableData;
+    res.send(context);
+  });
+});
+
+
 // Event information
 app.get('/eventInformation',function(req,res,next){
   var context = {};
@@ -26,7 +55,7 @@ app.get('/eventInformation',function(req,res,next){
     '`eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`' +
     'FROM `events` WHERE `eid` = ?';
 
-  mysql.pool.query(query, [rec.body.eid], function(err, rows, fields){
+  mysql.pool.query(query, [req.body.eid], function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -53,7 +82,7 @@ app.use(function(req,res){
 app.use(function(err, req, res, next){
   console.error(err.stack);
   res.status(500);
-  res.render('errorPage', { error: err });
+  res.render('500');
 });
 
 app.listen(app.get('port'), function(){

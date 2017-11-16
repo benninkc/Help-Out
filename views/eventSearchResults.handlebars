@@ -1,0 +1,22 @@
+<table id="table">
+    <caption>Events</caption>
+    <tr>
+        <th>Event Name</th>
+        <th>Event Date</th>
+        <th>Event Description</th>
+        <th>Event Event Meet Details</th>
+    </tr>
+
+    {{#each table}}
+    <tr> 
+        <td>{{this.eventname}}</td>
+        <td>{{this.eventdate}}</td>
+        <td>{{this.eventdescription}}</td>
+        <td>{{this.eventmeetdetails}}</td>
+    </tr>
+    {{/each}}
+</table>
+
+
+
+
