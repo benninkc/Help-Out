@@ -15,6 +15,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 	
 	// Reads form contents
 	var addressVal = document.getElementById('userAddress').value;
+	var distance = document.getElementById('distance').value;
 
 	// Google maps api object instance.
 	var geocoder = new google.maps.Geocoder();	
@@ -25,13 +26,18 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 			var myResult = results[0].geometry.location;
 			var stringRes = JSON.stringify(myResult);
 			var objRes = JSON.parse(stringRes);
+			var maxVals;
+			console.log(objRes.lat);
+			console.log(objRes.lng);
+
+			var payload = latLngRangeCalc(objRes.lat, objRes.lng, distance);
+			console.log(payload.latMin);
+			console.log(payload.latMax);
+			console.log(payload.lngMin);
+			console.log(payload.lngMax);
 
 			// Create an asynch request sending lat and long to /locationSearch
 			var req = new XMLHttpRequest();
-			var payload ={lat:null, lng:null};
-
-			payload.lat = objRes.lat;
-			payload.lng = objRes.lng;
 
 			req.open("POST", "/locationSearch", true);
 			req.setRequestHeader("Content-Type", "application/json");
@@ -84,7 +90,59 @@ function initSearch() {
 	console.log("searchReady");
 }
 
+/*********************************************************************
+** Description: Lat Lng min max calculator
+What it does: Calculates the minimum and maximum latitude and longitude
+coordinates given a distance from a latitude and longitude point.
+what it returns: Object with latMin, latMax, lngMin, lngMax
+*********************************************************************/
+function latLngRangeCalc(lat, lng, d) {
+	// Use to convert from degrees to rad
+	var p = Math.PI / 180;
 
+	// Radius of the Earth
+	var R = 6371;
+	var ans = {latMin:null, latMax:null, lngMin:null, lngMax:null};
+
+	// First iteration calculates longitude, second latitude
+	for (i = 1; i < 3; i++) {
+		// Bearing, convert to rad
+		var brng = 90 * i * p;
+
+		// convert to rad
+		var latRad = lat * p;
+		var lngRad = lng * p;
+
+		var lat2Rad = Math.asin(Math.sin(latRad) * Math.cos(d/R) + Math.cos(latRad) * Math.sin(d/R) * Math.cos(brng));
+		var lng2Rad = lngRad + Math.atan2(Math.sin(brng)*Math.sin(d/R) *Math.cos(latRad), Math.cos(d/R) - Math.sin(latRad)*Math.sin(lat2Rad));
+
+		// Convert back to degrees
+		lat2 = lat2Rad * (180 / Math.PI);
+		lng2 = lng2Rad * (180 / Math.PI);
+
+		// Calculate range by taking the difference in degrees that the distance
+		// results in and subtracting/adding it to the original lat/long
+		if (i == 1) {
+			if (lng2 < lng) {
+				ans.lngMin = lng - (lng - lng2);
+				ans.lngMax = lng + (lng - lng2);
+			} else {
+				ans.lngMin = lng - (lng2 - lng);
+				ans.lngMax = lng + (lng2 - lng);
+			}
+		} else {
+			if (lat2 < lat) {
+				ans.latMin = lat - (lat - lat2);
+				ans.latMax = lat + (lat - lat2);
+			} else {
+				ans.latMin = lat - (lat2 - lat);
+				ans.latMax = lat + (lat2 - lat);
+			}
+		}
+	}
+
+	return ans;
+}
 
 
 

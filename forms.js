@@ -24,13 +24,18 @@ app.get('/',function(req,res,next){
 app.post('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];
-  //var latitude = req.body.lat;
-  //var longitude = req.body.lng;
-  //console.log(latitude);
-  //console.log(longitude);
+  var minLat = req.body.latMin;
+  var minLng = req.body.lngMin;
+  var maxLat = req.body.latMax;
+  var maxLng = req.body.lngMax;
+  console.log(minLat);
+  console.log(minLng);
+  console.log(maxLat);
+  console.log(maxLng);
 
-  var query = 'SELECT `eventname`, `eventdescription` FROM `events`';
-  mysql.pool.query(query, function(err, rows, fields){
+  var query = 'SELECT `eventname`, `eventdescription` FROM `event` WHERE ' +
+  'eventlatitude > ? && eventlatitude < ? && eventlongitude > ? && eventlongitude < ?';
+  mysql.pool.query(query, [minLat, maxLat, minLng, maxLng], function(err, rows, fields){
     if(err){
       next(err);
       return;

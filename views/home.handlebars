@@ -1,75 +1,89 @@
 <!-- Header -->
 <div id="homePageText">
-<header class="jumbotron jumbotron-fluid"> 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
-    <div class="container">
-      <div class="row">
+  <header class="jumbotron jumbotron-fluid"> 
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
+      <div class="container">
+        <div class="row">
 
-        <div class="col-sm">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div class="col-sm">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="navbar-toggler-icon"></span>
+            </button>
 
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav" id="navElements">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-            </ul>
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav" id="navElements">
+                <li class="nav-item active">
+                  <form action="/" method="get">
+                    <a class="nav-link" id="homeBtn" href="/">Home <span class="sr-only">(current)</span></a>
+                  </form>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="col-sm" >
+            <div class = "header-btn" id="loginBtn">
+              <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+            </div>
           </div>
         </div>
       </div>
+    </nav>
 
-      <div class="row justify-content-end">
-        <div class="col-sm" >
-          <div class = "header-btn" id="loginBtn">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-          </div>
-        </div>
-      </div>
+    <div class="container" id="jumboText">
+      <h1 class="display-3">Make a Difference</h1>
+      <form class="form">
+
+        <fieldset class="form-group">
+
+
+          <label for="exampleInputEmail1">Search for volunteer opportunites near you</label>
+          <input type="text" class="form-control" id="userAddress" placeholder="Enter Address or Zip Code">
+          <label class="mr-sm-2" for="inlineFormCustomSelect">How far are you willing to travel?</label>
+          <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="distance">
+            <option selected>Choose Distance</option>
+            <option value="10">10 Miles</option>
+            <option value="25">25 Miles</option>
+            <option value="50">50 Miles</option>
+            <option value="100">100 Miles</option>
+          </select>
+        </fieldset>
+        
+        
+        
+        <button type="submit" class="btn btn-success" id="searchSubmit">Search</button>
+
+      </form>
     </div>
-  </nav>
 
-  <div class="container" id="jumboText">
-    <h1 class="display-3">Make a Difference</h1>
-    <form>
+  </header>
 
-      <div class="form-group">
-        <label for="exampleInputEmail1">Search for volunteer opportunites near you</label>
-        <input type="text" class="form-control" id="userAddress" placeholder="Enter Address or Zip Code">
-      </div>
-      
-      <button type="submit" class="btn btn-success" id="searchSubmit">Search</button>
+  <!-- Services -->
 
-    </form>
-  </div>
-
-</header>
-
-<!-- Services -->
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <h4>Help Out is a social platform for connecting volunteers with events.</h4>
-      <p> Help Out is a great way to connect and help with people near you.  Simply
-        Enter your address and the system will find local events that you can volunteer
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h4>Help Out is a social platform for connecting volunteers with events.</h4>
+        <p> Help Out is a great way to connect and help with people near you.  Simply
+          Enter your address and the system will find local events that you can volunteer
         for. Alternatively, you can post events and find volunteers near you. </p>
-    </div>
-    <div class="col-sm">
+      </div>
+      <div class="col-sm">
 
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <div class="container" id="searchContainer">
