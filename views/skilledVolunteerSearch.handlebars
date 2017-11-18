@@ -1,0 +1,89 @@
+<!-- Header -->
+<div id="homePageText">
+<header class="jumbotron jumbotron-fluid"> 
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav" id="navElements">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/skilledVolunteerSearch">Find Skilled Volunteer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <div class="col-sm" >
+          <div class = "header-btn" id="loginBtn">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" id="jumboText">
+    <h1 class="display-3">Find a Skilled Volunteer</h1>
+  </div>
+</header>
+  
+  <div class="container">
+    <form id="skilled_volunteer_search_form" method="GET" action="/select-skilled-volunteers">
+
+      <div class="form-group">
+	  <h3>Search for volunteers with skills that match your needs</h3><br>
+	Choose a skill: 
+        <select id="search_volunteer_skills" name="volunteer_skill" form="skilled_volunteer_search_form">
+	    {{#each skill}}
+		<option value={{this.sid}}>{{this.skillname}}</option>
+	    {{/each}}
+	</select>
+          
+      <input type="submit" class="btn btn-success" id="skilled_volunteer_search_submit" form="skilled_volunteer_search_form" value="Search">
+
+    </form>
+  </div>
+  </div>
+  <br><br><br>
+
+<!-- Services -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h4>Help Out is a social platform for connecting volunteers with events.</h4>
+      <p> Help Out is a great way to connect and help with people near you.  Simply
+        Enter your address and the system will find local events that you can volunteer
+        for. Alternatively, you can post events and find volunteers near you. </p>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container" id="searchContainer">
+  
+</div>
+
+
+
+

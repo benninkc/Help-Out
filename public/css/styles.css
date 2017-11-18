@@ -40,7 +40,9 @@ header.jumbotron {
 	padding-top: 100px;
 }
 
-
+#skilled_volunteer_search_form {
+	border: thin solid black;
+}
 
 
 

@@ -21,6 +21,20 @@ app.get('/',function(req,res,next){
 // Gets sent information from geocode function
 // Generates data to used in the geocode.js function to create a search result.
 // Page
+//
+// Find a Skilled Volunteer Page
+app.get('/skilledVolunteerSearch', function(req,res,next){
+
+  var context = {};
+  mysql.pool.query('SELECT sid, skillname FROM skill', function(err, rows, fields){
+    if(err){
+	next(err);
+	return;
+    }
+    context.skill = rows;
+    res.render('skilledVolunteerSearch', context);
+  });
+});
 app.post('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];
