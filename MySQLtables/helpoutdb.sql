@@ -128,7 +128,6 @@ FROM volunteer LEFT JOIN volunteer_skill ON volunteer.vid = volunteer_skill.vid
 WHERE volunteer_skill.sid = ? ;
 
 
-
 #############################
 #
 #  S a m p l e    D a t a
