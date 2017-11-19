@@ -57,4 +57,20 @@ git clone https://github.com/natez56/CS361Project.git
 1) Follow the guide here: https://developers.google.com/maps/documentation/javascript/get-api-key
 2) Once you have your auth key insert it into the HTML located in the main.handlebars page in the layouts folder.
 
+--Getting Set Up On Flip--
+1) Log on to a server such as flip3.engr.oregonstate.edu
+2) Create a folder for CS361.
+3) Navigate to the folder you just created
+4) Go to github and navigate to the CS361 project page.
+5) Click on the green button that says Clone or download and copy the link.
+6) In your flip terminal type: git clone and then paste what you copied. Should look like:
+git clone https://github.com/natez56/CS361Project.git
+7) Now you should have a folder named CS361 in your directory.  Navigate to that folder.
+8) Use the command node form.js to run the required js.
+9) Navigate to http://flip3.engr.oregonstate.edu:9005 to view the rendered page.
+10) Note if the page is not loading it is most likely because the port is in use to fix this follow these steps
+11) Open the forms.js file.
+12) Find the line that says app.set('port', 9000); and change the port to something else like 5005.
+13) Save the file.  Make sure the files are up to date on flip with the new port.
+14) Run node forms.js again and go back to the page http://flip3.engr.oregonstate.edu:5005 <- now with the new port.
 
