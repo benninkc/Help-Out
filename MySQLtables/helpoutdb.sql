@@ -104,7 +104,7 @@ SET autocommit=1;
 #############################
 
 #
-# Query #1 for For 'View Volunteer Event' (Gets all events)
+# Query #1 for 'View Volunteer Event' (Gets all events)
 #
 
 SELECT `eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`
@@ -112,13 +112,20 @@ FROM `event`;
 
 
 #
-# Query #2 for For 'View Volunteer Event' (Gets volunteer selected event)
+# Query #2 for 'View Volunteer Event' (Gets volunteer selected event)
 #
 
 SELECT `eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`
 FROM `event` WHERE `eid` = ? ;
 
 
+#
+# Query #3 for 'Select skilled Volunteer' (gets any volunteer with specific skill id)
+#
+
+SELECT volunteer.vid, volunteer.firstname, volunteer.lastname, volunteer.email, volunteer.latitude, volunteer.longitude, volunteer.usertype, volunteer_skill.sid
+FROM volunteer LEFT JOIN volunteer_skill ON volunteer.vid = volunteer_skill.vid
+WHERE volunteer_skill.sid = ? ;
 
 
 
