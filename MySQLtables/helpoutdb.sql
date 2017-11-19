@@ -127,6 +127,14 @@ SELECT volunteer.vid, volunteer.firstname, volunteer.lastname, volunteer.email, 
 FROM volunteer LEFT JOIN volunteer_skill ON volunteer.vid = volunteer_skill.vid
 WHERE volunteer_skill.sid = ? ;
 
+#
+# Query #4 for 'Filter by Geography' (returns any event within specific geographic bounds)
+#
+
+SELECT `eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`
+FROM `event`
+WHERE (`eventlatitude`> ?MINLAT? And `eventlatitude` < ?MAXLAT?) AND (`eventlongitude` > ?MINLONG? And `eventlongitude` < ?MAXLONG?);
+
 
 #############################
 #
