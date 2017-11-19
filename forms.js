@@ -35,16 +35,38 @@ app.get('/skilledVolunteerSearch', function(req,res,next){
     res.render('skilledVolunteerSearch', context);
   });
 });
+
+//Returns skilled volunteer information
+app.get('/select-skilled-volunteers', function(req, res, next){
+  var context = {};
+  //console.log(req.query);
+  mysql.pool.query('SELECT V.firstname, V.lastname, V.email FROM volunteer V INNER JOIN volunteer_skill VS on V.vid = VS.vid INNER JOIN skill S on S.sid = VS.sid WHERE S.skillname = ?', [req.query.volunteer_skill], function(err, rows, fields){
+    if(err){
+	next(err);
+	return;
+    }	
+    //console.log(rows.length);
+    context.skillname = req.query.volunteer_skill;
+    context.volunteer = rows;
+    res.render('skilledVolunteerSearchResults', context);
+  });
+});
+
 app.post('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];
-  //var latitude = req.body.lat;
-  //var longitude = req.body.lng;
-  //console.log(latitude);
-  //console.log(longitude);
+  var minLat = req.body.latMin;
+  var minLng = req.body.lngMin;
+  var maxLat = req.body.latMax;
+  var maxLng = req.body.lngMax;
+  console.log(minLat);
+  console.log(minLng);
+  console.log(maxLat);
+  console.log(maxLng);
 
-  var query = 'SELECT `eventname`, `eventdescription` FROM `events`';
-  mysql.pool.query(query, function(err, rows, fields){
+  var query = 'SELECT `eventname`, `eventdescription` FROM `event` WHERE ' +
+  'eventlatitude > ? && eventlatitude < ? && eventlongitude > ? && eventlongitude < ?';
+  mysql.pool.query(query, [minLat, maxLat, minLng, maxLng], function(err, rows, fields){
     if(err){
       next(err);
       return;
