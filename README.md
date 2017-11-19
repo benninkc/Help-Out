@@ -69,8 +69,8 @@ git clone https://github.com/natez56/CS361Project.git
 8) Use the command node form.js to run the required js.
 9) Navigate to http://flip3.engr.oregonstate.edu:9005 to view the rendered page.
 10) Note if the page is not loading it is most likely because the port is in use to fix this follow these steps
-  1) Open the forms.js file.
-  2) Find the line that says app.set('port', 9000); and change the port to something else like 5005.
-  3) Save the file.  Make sure the files are up to date on flip with the new port.
-  4) Run node forms.js again and go back to the page http://flip3.engr.oregonstate.edu:5005 <- now with the new port.
+  i) Open the forms.js file.
+  ii) Find the line that says app.set('port', 9000); and change the port to something else like 5005.
+  iii) Save the file.  Make sure the files are up to date on flip with the new port.
+  iv) Run node forms.js again and go back to the page http://flip3.engr.oregonstate.edu:5005 <- now with the new port.
 
