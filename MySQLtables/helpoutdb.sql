@@ -138,9 +138,9 @@ WHERE volunteer_skill.sid = ? ;
 # Data for table 'event'
 #
 
-INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (1, 1, '2017-11-25 00:00:00', 'East bank river clean-up', 'We are going clean up the east bank of the river from OMSI to the Hawthorne bridge.', 'Meet underneath the Hawthorne Bridge on the east side of the river', 0, 0);
-INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (2, 5, '2017-12-12 00:00:00', 'Painting benches at Alberta park', 'Seven park benches have been vandalized and need a new coat of paint', 'Meet at the corner of 19th and Killingsworth', 0, 0);
-INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (3, 1, '2017-12-01 00:00:00', 'Ross Island beach clean-up', 'We will clean up the shores of Ross Island after the heavy rain', 'Clean-up crew departs from Willamette Park boat ramp at 9am sharp', 0, 0);
+INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (1, 1, '2017-11-25 00:00:00', 'East bank river clean-up', 'We are going clean up the east bank of the river from OMSI to the Hawthorne bridge.', 'Meet underneath the Hawthorne Bridge on the east side of the river', 45.51251597870104,  -122.66822218894957);
+INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (2, 5, '2017-12-12 00:00:00', 'Painting benches at Alberta park', 'Seven park benches have been vandalized and need a new coat of paint', 'Meet at the corner of 19th and Killingsworth', 45.56276443144316, -122.64597058296204);
+INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`) VALUES (3, 1, '2017-12-01 00:00:00', 'Ross Island beach clean-up', 'We will clean up the shores of Ross Island after the heavy rain', 'Clean-up crew departs from Willamette Park boat ramp at 9am sharp', 45.47557036440473, -122.66932725906372);
 # 3 records
 
 #
@@ -168,7 +168,9 @@ INSERT INTO `skill` (`sid`, `skillname`, `skilldescription`) VALUES (4, 'Carpent
 # Data for table 'volunteer'
 #
 
-INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Fred', 'Flintstone', 'fred@rockville.net', 0, 0, 'volunteer');
+INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Fred', 'Flintstone', 'fred@rockville.net', 45.64514324557451, -122.65740752220154, 'volunteer');
+INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Donal', 'Duck', 'donald@easystreet.com', 46.12567886977839, -122.93576717376708, 'volunteer');
+#
 # 1 records
 
 #
