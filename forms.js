@@ -35,6 +35,23 @@ app.get('/skilledVolunteerSearch', function(req,res,next){
     res.render('skilledVolunteerSearch', context);
   });
 });
+
+//Returns skilled volunteer information
+app.get('/select-skilled-volunteers', function(req, res, next){
+  var context = {};
+  //console.log(req.query);
+  mysql.pool.query('SELECT V.firstname, V.lastname, V.email FROM volunteer V INNER JOIN volunteer_skill VS on V.vid = VS.vid INNER JOIN skill S on S.sid = VS.sid WHERE S.skillname = ?', [req.query.volunteer_skill], function(err, rows, fields){
+    if(err){
+	next(err);
+	return;
+    }	
+    //console.log(rows.length);
+    context.skillname = req.query.volunteer_skill;
+    context.volunteer = rows;
+    res.render('skilledVolunteerSearchResults', context);
+  });
+});
+
 app.post('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];

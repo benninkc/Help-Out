@@ -49,24 +49,30 @@
         <h1 class="display-3">Find a Skilled Volunteer</h1>
       </div>
     </div>
-
-
+  
     <div class="container" id="skillsPage">
-      <form id="skilled_volunteer_search_form" method="GET" action="/select-skilled-volunteers">
-        <div class="form-group">
+      
+      <h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3><br>
+      <div class ="container" id="skilled-vol-results">
+      {{#if volunteer}}
+      <table id="skilled-vol-table">
+	<tr>
+	  <th>Name</th>
+	  <th>Email</th>
+	</tr>
 
-         <h3>Search for volunteers with skills that match your needs</h3><br>
-         Choose a skill: 
-         <select id="search_volunteer_skills" name="volunteer_skill" form="skilled_volunteer_search_form">
-           {{#each skill}}
-           <option value='{{this.skillname}}'>{{this.skillname}}</option>
-           {{/each}}
-         </select>
-
-         <input type="submit" class="btn btn-success" id="skilled_volunteer_search_submit" form="skilled_volunteer_search_form" value="Search">
-       </div>
-     </form>
-
+	{{#each volunteer}}
+	<tr>
+	  <td>{{this.firstname}} {{this.lastname}}</td>
+	  <td>{{this.email}}</td>
+	</tr>
+	{{/each}}
+      </table>
+      {{else}}
+      No matching results for "{{this.skillname}}"<br>
+      {{/if}}		
+      </div>
+    
      <br><br><br>
 
      <!-- Services -->
@@ -92,5 +98,5 @@
 </div>
 
 
-
+<script src="/forms.js"> </script>
 
