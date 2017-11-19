@@ -165,3 +165,10 @@ INSERT INTO `skill` (`sid`, `skillname`, `skilldescription`) VALUES (4, 'Carpent
 INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Fred', 'Flintstone', 'fred@rockville.net', 0, 0, 'volunteer');
 # 1 records
 
+#
+# Data for table `volunteer_skill`
+#
+
+INSERT INTO `volunteer_skill` (`vid`, `sid`) VALUES
+(1, 1),
+(1, 2);
