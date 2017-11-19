@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 9000);
+app.set('port', 3306);
 app.use(express.static('public'));
 
 // Main page of database.
