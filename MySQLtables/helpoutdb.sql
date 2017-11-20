@@ -177,7 +177,7 @@ INSERT INTO `skill` (`sid`, `skillname`, `skilldescription`) VALUES (4, 'Carpent
 #
 
 INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Fred', 'Flintstone', 'fred@rockville.net', 45.64514324557451, -122.65740752220154, 'volunteer');
-INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (1, 'Donal', 'Duck', 'donald@easystreet.com', 46.12567886977839, -122.93576717376708, 'volunteer');
+INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `longitude`, `usertype`) VALUES (2, 'Donal', 'Duck', 'donald@easystreet.com', 46.12567886977839, -122.93576717376708, 'volunteer');
 #
 # 1 records
 
