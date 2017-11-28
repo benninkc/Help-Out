@@ -72,11 +72,11 @@ app.post('/locationSearch',function(req,res,next){
       return;
     }
 
-    var data = JSON.stringify(rows);
-    var json = JSON.parse(data);
+    //var data = JSON.stringify(rows);
+    //var json = JSON.parse(data);
 
-    for (var key in json) {
-      tableData.push(json[key]);
+    for (var key in rows) {
+      tableData.push(rows[key]);
     }
 
     context.table = tableData;

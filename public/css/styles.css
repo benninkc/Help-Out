@@ -30,6 +30,18 @@ ul.tableLinks {
 	left: 0;
 }
 
+#searchResPageJumbo {
+	position: absolute;
+	background-image: url(/img/mapPart.jpg);
+	background-attachment: fixed;
+	background-position: 100% 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	min-height: 400px;
+	width: 100%;
+	left: 0;
+}
+
 #navMain {
 	background-color: rgba(255,255,255,0.7) !important;
 }
@@ -43,6 +55,10 @@ ul.tableLinks {
 }
 
 #skilled_volunteer_search_form {
+	padding: 40px;
+}
+
+#eventSearchResults {
 	padding: 40px;
 }
 
@@ -69,6 +85,27 @@ ul.tableLinks {
 	background-color: white;
 }
 
+#eventSearchResPage {
+	padding: 40;
+	position: absolute;
+	top: 350px;
+	left: 0px;
+	right: 0px;
+	height: 63%;
+	margin: 0 auto;
+	background-color: white;
+}
+
+#eventSearchResBackground {
+	position: absolute;
+	min-height: 100vh;
+	height: 100%;
+	margin: 0;
+	min-width: 100vw;
+	background-color: #E3E3E3;
+}
+
+
 #skillsPageBackground {
 	position: absolute;
 	min-height: 100vh;
@@ -83,8 +120,26 @@ ul.tableLinks {
 		visibility: hidden;
 	}
 
+	#searchResPageJumbo {
+		visibility: hidden;
+	}
+
 	#skillsPage {
 		top: 20px;
+	}
+
+	#eventSearchResPage {
+		top: 100px;
+		height: 80%;
+	}
+
+	#eventSearchResBackground {
+		height: 150%;
+		margin: 0;
+	}
+
+	#navMain {
+		background-color: white !important; 
 	}
 }
 

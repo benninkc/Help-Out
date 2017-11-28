@@ -50,16 +50,27 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 	
 					// JQuery to manipulate home dom to replace elements with a
 					// List of returned events.
-					$("#homePageText").after('<header id="searchHeader"></header>');
-					$('#navMain').clone().appendTo('#searchHeader');
-					$("#homePageText").remove();
-					$('#searchContainer').append('<h1>Event Search Results</h1>');
-					$('#searchContainer').append('<ul class="list-group" id="eventList"></ul>');
+					$("#homePageText").after('<div id="eventSearchResText"></div>');
+					$('#navMain').clone().appendTo('#eventSearchResText');
 
+					$("#homePageText").remove();
+					$('#eventSearchResText').append('<div class="container" id="eventSearchResBackground">' + 
+						'<div class="jumbotron jumbotron-fluid" id="searchResPageJumbo">' +
+						'<div class="container" id="jumboText"></div></div>' +
+						'<div class="container" id="eventSearchResPage"></div>');    
+					$('#eventSearchResPage').append('<div class="container" id="eventSearchResults">');
+					
 					// Read events from response JSON object.
 					var count = 0;
 					for (var object in response) {
 						var data = response[object];
+
+						if (jQuery.isEmptyObject(data)) {
+							$('#eventSearchResults').append('<h2>No events near you. Try broadening your search.</h2>');
+						} else {
+							$('#eventSearchResults').append('<h3>Search Results. Click on events for more info!</h3><hr><br />');
+							$('#eventSearchResults').append('<ul class="list-group" id="eventList"></ul>');
+						}
 
 						for (var key in data) {
 
@@ -67,9 +78,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 							$('#eventList').append('<li class="list-group-item" id="list'+ count +'"></li>');
 						
 							// Add event to li element
-							var stringVal = JSON.stringify(data[key]);
-							var dataVal = JSON.parse(stringVal);
-							$("#list" + count + ":last-child").append(dataVal.eventname + "<br />" + dataVal.eventdescription);
+							$("#list" + count + ":last-child").append(data[key].eventname + "<br />" + data[key].eventdescription);
 							count++;
 						}
 					}
