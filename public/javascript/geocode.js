@@ -9,6 +9,7 @@ Describe arguments/restrictions: Forms data will be an address or a
 zip code.
 what it returns: Server returns event name and event information.
 *********************************************************************/
+
 document.getElementById("searchSubmit").addEventListener('click', function(event){
 	// Prevent the default form action (stops page refresh)
 	event.preventDefault();
@@ -26,7 +27,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 			var myResult = results[0].geometry.location;
 			var stringRes = JSON.stringify(myResult);
 			var objRes = JSON.parse(stringRes);
-			var maxVals;
+			
 			console.log(objRes.lat);
 			console.log(objRes.lng);
 
@@ -52,36 +53,44 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 					// List of returned events.
 					$("#homePageText").after('<div id="eventSearchResText"></div>');
 					$('#navMain').clone().appendTo('#eventSearchResText');
+					$("body").css("background-color", "#E3E3E3");
 
 					$("#homePageText").remove();
-					$('#eventSearchResText').append('<div class="container" id="eventSearchResBackground">' + 
-						'<div class="jumbotron jumbotron-fluid" id="searchResPageJumbo">' +
+					$('#eventSearchResText').append('<div class="jumbotron jumbotron-fluid" id="searchResPageJumbo">' +
 						'<div class="container" id="jumboText"></div></div>' +
 						'<div class="container" id="eventSearchResPage"></div>');    
 					$('#eventSearchResPage').append('<div class="container" id="eventSearchResults">');
 					
 					// Read events from response JSON object.
-					var count = 0;
-					for (var object in response) {
-						var data = response[object];
+					
+					
+					var data = response.table;
 
-						if (jQuery.isEmptyObject(data)) {
-							$('#eventSearchResults').append('<h2>No events near you. Try broadening your search.</h2>');
-						} else {
-							$('#eventSearchResults').append('<h3>Search Results. Click on events for more info!</h3><hr><br />');
-							$('#eventSearchResults').append('<ul class="list-group" id="eventList"></ul>');
-						}
+					if (jQuery.isEmptyObject(data)) {
+						$('#eventSearchResults').append('<h2>No events near you. Try broadening your search.</h2>');
+					} else {
+						$('#eventSearchResults').append('<h3>Map of local events</h3><hr><br />');
+						$('#eventSearchResults').append('<div id="map"></div><br />');
 
-						for (var key in data) {
+						initMap(objRes.lat, objRes.lng, distance);
 
-							// Create new li element
-							$('#eventList').append('<li class="list-group-item" id="list'+ count +'"></li>');
-						
-							// Add event to li element
-							$("#list" + count + ":last-child").append(data[key].eventname + "<br />" + data[key].eventdescription);
-							count++;
-						}
+						$('#eventSearchResults').append('<h3>Search Results. Click on events for more info!</h3><hr><br />');
+						$('#eventSearchResults').append('<ul class="list-group" id="eventList"></ul>');
 					}
+
+					var count = 0;
+					for (var key in data) {
+						console.log(data[key].eventlatitude);
+						addMapMarker(data[key].eventlatitude, data[key].eventlongitude);
+
+						// Create new li element
+						$('#eventList').append('<li class="list-group-item" id="list'+ count +'"></li>');
+
+						// Add event to li element
+						$("#list" + count + ":last-child").append(data[key].eventname + "<br />" + data[key].eventdescription);
+						count++;
+					}
+					
 				} else {
 					console.log("Error in network request: " + req.statusText);
 				}});
@@ -94,9 +103,33 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 	});	
 });
 
+var map;
+
 // Check that API key has loaded successfully 
 function initSearch() {
 	console.log("searchReady");
+}
+
+function initMap(latVal, lngVal, distance) {
+	if (distance > 25) {
+		zoomVal = 10;
+	} else if (distance < 10) {
+		zoomVal = 11;
+	}
+
+	var searchLocation = {lat: latVal, lng: lngVal};
+	map = new google.maps.Map(document.getElementById('map'), {
+		zoom: zoomVal,
+		center: searchLocation
+	});  
+}
+
+function addMapMarker(latVal, lngVal) {
+	var eventLocation = {lat: latVal, lng: lngVal};
+	var marker = new google.maps.Marker({
+        position: eventLocation,
+        map: map
+    });
 }
 
 /*********************************************************************

@@ -75,44 +75,30 @@ ul.tableLinks {
 }
 
 #skillsPage {
-	padding: 40;
+	padding: 40px;
 	position: absolute;
 	top: 200px;
 	left: 0px;
 	right: 0px;
-	height: 79%;
+	height: 100%;
 	margin: 0 auto;
 	background-color: white;
 }
 
 #eventSearchResPage {
-	padding: 40;
+	padding: 40px;
 	position: absolute;
 	top: 350px;
 	left: 0px;
 	right: 0px;
-	height: 63%;
-	margin: 0 auto;
+	height: auto;
 	background-color: white;
 }
 
-#eventSearchResBackground {
-	position: absolute;
-	min-height: 100vh;
-	height: 100%;
-	margin: 0;
-	min-width: 100vw;
-	background-color: #E3E3E3;
-}
-
-
 #skillsPageBackground {
 	position: absolute;
-	min-height: 100vh;
 	height: 100%;
-	margin: 0;
 	min-width: 100vw;
-	background-color: #f9f5e5;
 }
 
 @media only screen and (max-height: 500px) {
@@ -130,12 +116,7 @@ ul.tableLinks {
 
 	#eventSearchResPage {
 		top: 100px;
-		height: 80%;
-	}
-
-	#eventSearchResBackground {
-		height: 150%;
-		margin: 0;
+		height: auto;
 	}
 
 	#navMain {
@@ -143,8 +124,17 @@ ul.tableLinks {
 	}
 }
 
+#map {
+    height: 400px;
+    width: 100%;
+}
+
 @media only screen and (max-width: 1000px) {
 	.display-3 {
 		font-size: 250%;
 	}
+}
+
+#skillsPageBody {
+	background-color: #f9f5e5;
 }

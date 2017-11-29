@@ -59,21 +59,19 @@ app.post('/locationSearch',function(req,res,next){
   var minLng = req.body.lngMin;
   var maxLat = req.body.latMax;
   var maxLng = req.body.lngMax;
-  console.log(minLat);
-  console.log(minLng);
-  console.log(maxLat);
-  console.log(maxLng);
+  //console.log(minLat);
+  //console.log(minLng);
+  //console.log(maxLat);
+  //console.log(maxLng);
 
-  var query = 'SELECT `eventname`, `eventdescription` FROM `event` WHERE ' +
-  'eventlatitude > ? && eventlatitude < ? && eventlongitude > ? && eventlongitude < ?';
+  var query = 'SELECT `eventname`, `eventdescription`, `eventlatitude`, ' +
+  '`eventlongitude` FROM `event` WHERE eventlatitude > ? && ' + 
+  'eventlatitude < ? && eventlongitude > ? && eventlongitude < ?';
   mysql.pool.query(query, [minLat, maxLat, minLng, maxLng], function(err, rows, fields){
     if(err){
       next(err);
       return;
     }
-
-    //var data = JSON.stringify(rows);
-    //var json = JSON.parse(data);
 
     for (var key in rows) {
       tableData.push(rows[key]);
