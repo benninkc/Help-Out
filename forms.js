@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 7700);
+app.set('port', 7500);
 app.use(express.static('public'));
 
 // Main page of database.
@@ -36,11 +36,25 @@ app.get('/skilledVolunteerSearch', function(req,res,next){
   });
 });
 
+// Find an Event Host by Category page
+app.get('/categoryHostSearch', function(req,res,next){
+
+  var context = {};
+  mysql.pool.query('SELECT cid, categoryname FROM category', function(err, rows, fields){
+    if(err){
+        next(err);
+        return;
+    }
+    context.category = rows;
+    res.render('categoryHostSearch', context);
+  });
+});
+
 //Returns skilled volunteer information
 app.get('/select-skilled-volunteers', function(req, res, next){
   var context = {};
   //console.log(req.query);
-  mysql.pool.query('SELECT V.firstname, V.lastname, V.email FROM volunteer V INNER JOIN volunteer_skill VS on V.vid = VS.vid INNER JOIN skill S on S.sid = VS.sid WHERE S.skillname = ?', [req.query.volunteer_skill], function(err, rows, fields){
+  mysql.pool.query('SELECT V.vid, V.firstname, V.lastname, V.email FROM volunteer V INNER JOIN volunteer_skill VS on V.vid = VS.vid INNER JOIN skill S on S.sid = VS.sid WHERE S.skillname = ?', [req.query.volunteer_skill], function(err, rows, fields){
     if(err){
 	next(err);
 	return;
@@ -51,6 +65,28 @@ app.get('/select-skilled-volunteers', function(req, res, next){
     res.render('skilledVolunteerSearchResults', context);
   });
 });
+
+//Returns 'host by category' information
+app.get('/select-hosts-by-category', function(req, res, next){
+  var context = {};
+  //console.log(req.query);
+  mysql.pool.query('SELECT H.hid, H.hostorg, H.email FROM host H INNER JOIN category C ON H.cid = C.cid WHERE C.categoryname = ?', [req.query.host_category], function(err, rows, fields){
+      if(err){
+      next(err);
+      return;
+    }
+    //console.log(rows.length);
+    context.categoryname = req.query.host_category;
+    context.host = rows;
+    res.render('categoryHostSearchResults', context);
+  });
+});
+
+//Individual volunteer info: unsure if needed
+/*app.get('/select-volunteer-info', function(req, res, next){
+  var context = {};
+  mysql.pool.query('SELECT V.firstname, V.lastname, V.email
+});*/
 
 app.get('/locationSearch',function(req,res,next){
   var context = {};

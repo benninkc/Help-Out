@@ -10,6 +10,20 @@ USE `helpoutdb`;
 #############################
 
 #
+# Table structure for 'category'
+#
+
+CREATE TABLE `category` (
+  `cid` INTEGER AUTO_INCREMENT,
+  `categoryname` VARCHAR(50),
+  INDEX (`cid`)
+) ENGINE=myisam DEFAULT CHARSET=utf8;
+
+SET autocommit=1;
+
+
+
+#
 # Table structure for table 'event'
 #
 
@@ -39,7 +53,9 @@ CREATE TABLE `host` (
   `hid` INTEGER NOT NULL AUTO_INCREMENT,
   `hostorg` VARCHAR(100),
   `email` VARCHAR(50),
+  `cid` INTEGER NOT NULL,
   INDEX (`hid`),
+  INDEX (`cid`),
   PRIMARY KEY (`hid`)
 ) ENGINE=myisam DEFAULT CHARSET=utf8;
 
@@ -155,11 +171,22 @@ INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`,
 # Data for table 'host'
 #
 
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES (1, 'Willamette River Keepers', 'cleanrivers@gmail.com');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES (2, 'Red Cross Portland', 'events@redcross.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES (3, 'Sisters of the Road', 'kitchen@sistersoftheroad.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES (4, 'Portland Youth Soccer', 'kickit@portlandyouth.net');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES (5, 'Alberta Neighborhood Association', 'goodneighbors@alberta.org');
+INSERT INTO `host` (`hid`, `hostorg`, `email`, `cid`) VALUES (1, 'Willamette River Keepers', 'cleanrivers@gmail.com', 1);
+INSERT INTO `host` (`hid`, `hostorg`, `email`, `cid`) VALUES (2, 'Red Cross Portland', 'events@redcross.org', 2);
+INSERT INTO `host` (`hid`, `hostorg`, `email`, `cid`) VALUES (3, 'Sisters of the Road', 'kitchen@sistersoftheroad.org', 3);
+INSERT INTO `host` (`hid`, `hostorg`, `email`, `cid`) VALUES (4, 'Portland Youth Soccer', 'kickit@portlandyouth.net', 4);
+INSERT INTO `host` (`hid`, `hostorg`, `email`, `cid`) VALUES (5, 'Alberta Neighborhood Association', 'goodneighbors@alberta.org', 5);
+# 5 records
+
+#
+# Data for table 'category'
+#
+
+INSERT INTO `category` (`cid`, `categoryname`) VALUES (1, 'Environmental');
+INSERT INTO `category` (`cid`, `categoryname`) VALUES (2, 'Relief - disaster');
+INSERT INTO `category` (`cid`, `categoryname`) VALUES (3, 'Relief - hunger');
+INSERT INTO `category` (`cid`, `categoryname`) VALUES (4, 'Sports - youth');
+INSERT INTO `category` (`cid`, `categoryname`) VALUES (5, 'Community');
 # 5 records
 
 #

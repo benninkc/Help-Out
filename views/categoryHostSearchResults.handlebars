@@ -52,21 +52,21 @@
   
     <div class="container" id="skillsPage">
       
-      <h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3><br>
-      <div class ="container" id="skilled-vol-results">
-      {{#if volunteer}}
-      <table id="skilled-vol-table">
+      <h3>Search results for event hosts in category: "{{this.categoryname}}"</h3><br>
+      <div class ="container" id="host-category-results">
+      {{#if host}}
+      <table id="host-category-table">
 	<tr>
 	  <th>Name</th>
 	  <th>Email</th>
 	</tr>
 
-      <form id="get_volunteer_info" method="GET" action="/select-volunteer-info">
-	{{#each volunteer}}
+      <!--form id="get_host_info" method="GET" action="/select-host-info"-->
+	{{#each host}}
 	<tr>
 	  <td>
-	    <input type="hidden" form="get_volunteer_info" id="get_vol_info_id" name="vid" value="{{this.vid}}"/>
-	    <!--input type="submit" form="get_volunteer_info" id="get_vol_info_submit" value="-->{{this.firstname}} {{this.lastname}}
+	    <!--input type="hidden" form="get_host_info" id="get_host_info_id" name="hid" value="{{this.hid}}"/-->
+	    <!--input type="submit" form="get_volunteer_info" id="get_vol_info_submit" value="-->{{this.hostorg}}
 	  </td>
 	  <td>{{this.email}}</td>
 	</tr>
@@ -74,7 +74,7 @@
       </form>
       </table>
       {{else}}
-      No matching results for "{{this.skillname}}"<br>
+      No matching results for "{{this.categoryname}}"<br>
       {{/if}}		
       </div>
     
