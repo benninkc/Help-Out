@@ -39,9 +39,12 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 
 			// Create an asynch request sending lat and long to /locationSearch
 			var req = new XMLHttpRequest();
+			var queryString = "/locationSearch?latMin=" + payload.latMin + 
+				"&latMax="+ payload.latMax + "&lngMin=" + payload.lngMin + 
+				"&lngMax=" + payload.lngMax;
 
-			req.open("POST", "/locationSearch", true);
-			req.setRequestHeader("Content-Type", "application/json");
+			req.open("GET", queryString, true);
+			//req.setRequestHeader("Content-Type", "application/json");
 
 			req.addEventListener('load', function(){
 				if(req.status >= 200 && req.status < 400){
@@ -59,10 +62,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 					$('#eventSearchResText').append('<div class="jumbotron jumbotron-fluid" id="searchResPageJumbo">' +
 						'<div class="container" id="jumboText"></div></div>' +
 						'<div class="container" id="eventSearchResPage"></div>');    
-					$('#eventSearchResPage').append('<div class="container" id="eventSearchResults">');
-					
-					// Read events from response JSON object.
-					
+					$('#eventSearchResPage').append('<div class="container" id="eventSearchResults">');				
 					
 					var data = response.table;
 
@@ -75,27 +75,34 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 						initMap(objRes.lat, objRes.lng, distance);
 
 						$('#eventSearchResults').append('<h3>Search Results. Click on events for more info!</h3><hr><br />');
-						$('#eventSearchResults').append('<ul class="list-group" id="eventList"></ul>');
+						$('#eventSearchResults').append('<div class="list-group" id="eventList"></div>');
+						
 					}
 
 					var count = 0;
 					for (var key in data) {
 						console.log(data[key].eventlatitude);
-						addMapMarker(data[key].eventlatitude, data[key].eventlongitude);
+						addMapMarker(data[key].eventlatitude, data[key].eventlongitude, data[key].eventname);
+						$('#eventList').append('<form action="/eventInformation" method="get" id="list'+ count + '"></form>');
 
 						// Create new li element
-						$('#eventList').append('<li class="list-group-item" id="list'+ count +'"></li>');
+						$("#list" + count + ":last-child").append('<input type="hidden" name="eid"' + 
+							' value="1"></>');
+						$("#list" + count + ":last-child").append('<button type="submit" form="list'+ count + '" class="list-group-item list-group-item-action"' + 
+							'value="'+ data[key].eid + '" id="listButton">' + data[key].eventname + '<br />'+ data[key].eventdescription + '</button>');
 
-						// Add event to li element
-						$("#list" + count + ":last-child").append(data[key].eventname + "<br />" + data[key].eventdescription);
-						count++;
+						count++;	
 					}
+
 					
+					
+					$('#eventSearchResText').after('<div class="container" id="footer"></div>');
+
 				} else {
 					console.log("Error in network request: " + req.statusText);
 				}});
 
-			req.send(JSON.stringify(payload));
+			req.send();
 
 		} else {
 			alert("Error in geocode lookup" + status);
@@ -113,7 +120,7 @@ function initSearch() {
 function initMap(latVal, lngVal, distance) {
 	if (distance > 25) {
 		zoomVal = 10;
-	} else if (distance < 10) {
+	} else {
 		zoomVal = 11;
 	}
 
@@ -124,10 +131,11 @@ function initMap(latVal, lngVal, distance) {
 	});  
 }
 
-function addMapMarker(latVal, lngVal) {
+function addMapMarker(latVal, lngVal, eventName) {
 	var eventLocation = {lat: latVal, lng: lngVal};
 	var marker = new google.maps.Marker({
         position: eventLocation,
+        title: eventName,
         map: map
     });
 }

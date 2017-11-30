@@ -37,7 +37,7 @@ ul.tableLinks {
 	background-position: 100% 100%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	min-height: 400px;
+	min-height: 200px;
 	width: 100%;
 	left: 0;
 }
@@ -88,7 +88,7 @@ ul.tableLinks {
 #eventSearchResPage {
 	padding: 40px;
 	position: absolute;
-	top: 350px;
+	top: 160px;
 	left: 0px;
 	right: 0px;
 	height: auto;
@@ -137,4 +137,16 @@ ul.tableLinks {
 
 #skillsPageBody {
 	background-color: #f9f5e5;
+}
+
+#footer {
+	padding: 10px;
+}
+
+#eventInformationResult {
+	padding-top: 100px;
+}
+
+#eventInfoRes {
+	padding-bottom: 15px;
 }

@@ -52,20 +52,20 @@ app.get('/select-skilled-volunteers', function(req, res, next){
   });
 });
 
-app.post('/locationSearch',function(req,res,next){
+app.get('/locationSearch',function(req,res,next){
   var context = {};
   var tableData = [];
-  var minLat = req.body.latMin;
-  var minLng = req.body.lngMin;
-  var maxLat = req.body.latMax;
-  var maxLng = req.body.lngMax;
+  var minLat = req.query.latMin;
+  var minLng = req.query.lngMin;
+  var maxLat = req.query.latMax;
+  var maxLng = req.query.lngMax;
   //console.log(minLat);
   //console.log(minLng);
   //console.log(maxLat);
   //console.log(maxLng);
 
   var query = 'SELECT `eventname`, `eventdescription`, `eventlatitude`, ' +
-  '`eventlongitude` FROM `event` WHERE eventlatitude > ? && ' + 
+  '`eventlongitude`, `eid` FROM `event` WHERE eventlatitude > ? && ' + 
   'eventlatitude < ? && eventlongitude > ? && eventlongitude < ?';
   mysql.pool.query(query, [minLat, maxLat, minLng, maxLng], function(err, rows, fields){
     if(err){
@@ -91,17 +91,14 @@ app.get('/eventInformation',function(req,res,next){
     '`eventdescription`, `eventmeetdetails`, `eventlatitude`, `eventlongitude`' +
     'FROM `event` WHERE `eid` = ?';
 
-  mysql.pool.query(query, [req.body.eid], function(err, rows, fields){
+  mysql.pool.query(query, [req.query.eid], function(err, rows, fields){
     if(err){
       next(err);
       return;
     }
-    
-    var data = JSON.stringify(rows);
-    var json = JSON.parse(data);
 
-    for (var key in json) {
-      tableData.push(json[key]);
+    for (var key in rows) {
+      tableData.push(rows[key]);
     }
 
     context.table = tableData;
