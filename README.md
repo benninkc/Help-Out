@@ -20,6 +20,8 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 
 ## Homework 6
 
+This is what was completed last time around...
+
 | Story | Tasks | Who | Status |
 | ------- | -------- | ----- | -----|
 | View Volunteer Event | Create MySQL Table of Events, Create Queries to Extract Event Results, Create Web Page to Show list of hyperlinked results, Create Event Detail page to show to User | Nathan, Tanya | Draft MySQL portions posted, Still need to create list of events page, Event detail page created
