@@ -96,6 +96,22 @@ CREATE TABLE `volunteer_skill`(
 
 SET autocommit=1;
 
+#
+# Table structure for table 'volunteer_event'
+#
+
+CREATE TABLE `volunteer_event`(
+  `vid` INTEGER NOT NULL,
+  `eid` INTEGER NOT NULL,
+  CONSTRAINT `volunteer_event_ibfk_1` FOREIGN KEY(`vid`)
+  REFERENCES `volunteer` (`vid`),
+  CONSTRAINT `volunteer_event_ibfk_2` FOREIGN KEY(`eid`)
+  REFERENCES `event` (`eid`),
+  UNIQUE KEY(`vid`, `eid`)
+) ENGINE=myisam DEFAULT CHARSET=utf8;
+
+SET autocommit=1;
+
 
 #############################
 #
@@ -188,3 +204,12 @@ INSERT INTO `volunteer` (`vid`, `firstname`, `lastname`, `email`, `latitude`, `l
 INSERT INTO `volunteer_skill` (`vid`, `sid`) VALUES
 (1, 1),
 (1, 2);
+
+##########################################################
+#
+#  EDIT DATA (These should not be run manually)
+#
+##########################################################
+
+INSERT INTO `volunteer` (`email`) VALUES (`emailInput`);
+INSERT INTO `volunteer_event` (`vid`, `sid`) VALUES (`vidInput, sidInput`);

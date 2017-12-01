@@ -9,7 +9,7 @@ Describe arguments/restrictions: Forms data will be an address or a
 zip code.
 what it returns: Server returns event name and event information.
 *********************************************************************/
-
+if(top.location.pathname === '/') {
 document.getElementById("searchSubmit").addEventListener('click', function(event){
 	// Prevent the default form action (stops page refresh)
 	event.preventDefault();
@@ -109,6 +109,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 		}
 	});	
 });
+}
 
 var map;
 
@@ -194,5 +195,39 @@ function latLngRangeCalc(lat, lng, d) {
 	return ans;
 }
 
+/*********************************************************************
+** Description: Register submit
+What it does: Submits post request to add new volunteer to the volunteer table.
+Also adds an entry to the volunteer_event table.
+*********************************************************************/
+if(top.location.pathname === '/eventInformation') {
+	$(document).ready(function () {
+		document.getElementById("registerSubmit").addEventListener('click', function(event){
+			// Prevent the default form action (stops page refresh)
+			event.preventDefault();
+
+			var emailVal = document.getElementById('userEmail').value;
+			var eidVal = document.getElementById('eventEIDHolder').value;
+			console.log(eidVal);
+			console.log(emailVal);
+			var payload = {email: emailVal, eid: eidVal};
+
+			var req = new XMLHttpRequest();
+			req.open("POST", "/register", true);
+			req.setRequestHeader("Content-Type", "application/json");
+
+			req.addEventListener('load', function(){
+				if(req.status >= 200 && req.status < 400){
+					// Response contains event names and information
+					var response = JSON.parse(req.responseText);
+				} else {
+					console.log("Error in network request: " + req.statusText);
+				}
+			});
+
+			req.send(JSON.stringify(payload));
+		});
+	});
+}
 
 
