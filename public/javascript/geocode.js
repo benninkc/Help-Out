@@ -87,7 +87,7 @@ document.getElementById("searchSubmit").addEventListener('click', function(event
 
 						// Create new li element
 						$("#list" + count + ":last-child").append('<input type="hidden" name="eid"' + 
-							' value="1"></>');
+							' value="' + data[key].eid + '"></>');
 						$("#list" + count + ":last-child").append('<button type="submit" form="list'+ count + '" class="list-group-item list-group-item-action"' + 
 							'value="'+ data[key].eid + '" id="listButton">' + data[key].eventname + '<br />'+ data[key].eventdescription + '</button>');
 

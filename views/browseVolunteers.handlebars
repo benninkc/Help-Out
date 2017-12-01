@@ -25,9 +25,6 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/browseVolunteers">Browse Volunteers</a>
               </li>
-	      <li class="nav-item active">
-                <a class="nav-link" href="/browseHosts">Browse Event Hosts</a>
-              </li>
             </ul>
           </div>
 
@@ -49,35 +46,27 @@
 
     <div class="jumbotron jumbotron-fluid" id="skillPageJumbo"> 
       <div class="container" id="jumboText">
-        <h1 class="display-3">Find a Skilled Volunteer</h1>
+        <h1 class="display-3">Browse Volunteers</h1>
       </div>
     </div>
   
     <div class="container" id="skillsPage">
       
-      <h3>Search results for event hosts in category: "{{this.categoryname}}"</h3><br>
-      <div class ="container" id="host-category-results">
-      {{#if host}}
-      <table id="host-category-table">
-	<tr>
-	  <th>Name</th>
-	  <th>Email</th>
-	</tr>
-
-      <!--form id="get_host_info" method="GET" action="/select-host-info"-->
-	{{#each host}}
-	<tr>
-	  <td>
-	    <!--input type="hidden" form="get_host_info" id="get_host_info_id" name="hid" value="{{this.hid}}"/-->
-	    <!--input type="submit" form="get_volunteer_info" id="get_vol_info_submit" value="-->{{this.hostorg}}
-	  </td>
-	  <td>{{this.email}}</td>
-	</tr>
+      <!--h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3--><br>
+      <div class ="container" id="skilled-vol-results">
+      {{#if volunteer}}
+	<ul style="list-style: none;">
+          <li><h3><b><u>Volunteer Name</u></b></h3></li>
+	{{#each volunteer}}
+	  <li><h5>
+            <form id="get_volunteer_info{{this.vid}}" method="GET" action="/select-volunteer-info">
+	    <input type="hidden" form="get_volunteer_info{{this.vid}}" id="get_vol_info_id{{this.vid}}" name="vid" value="{{this.vid}}"/>
+    	    <input class="getInfo" type="submit" form="get_volunteer_info{{this.vid}}" id="get_vol_info_submit{{this.vid}}" value="{{this.firstname}} {{this.lastname}}"/>
+	    </form>
+	  </h5></li>
 	{{/each}}
-      </form>
-      </table>
       {{else}}
-      No matching results for "{{this.categoryname}}"<br>
+      No volunteers currently in the database. Our app has failed society.<br>
       {{/if}}		
       </div>
     

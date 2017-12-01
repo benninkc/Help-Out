@@ -1,7 +1,6 @@
 <!-- Header -->
-<body id="skillsPageBody">
 <div id="skillsPageText">
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navMain">
     <div class="container">
 
       <div class="row">
@@ -18,15 +17,15 @@
                 </form>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" id="skillPageNavBtn" href="/skilledVolunteerSearch">Find Skilled Volunteer</a>
+                <a class="nav-link" href="/skilledVolunteerSearch">Find Skilled Volunteer</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/categoryHostSearch">Find Host by Category</a>
               </li>
-	      <li class="nav-item active">
+              <li class="nav-item active">
                 <a class="nav-link" href="/browseVolunteers">Browse Volunteers</a>
               </li>
-              <li class="nav-item active">
+	      <li class="nav-item active">
                 <a class="nav-link" href="/browseHosts">Browse Event Hosts</a>
               </li>
             </ul>
@@ -50,30 +49,46 @@
 
     <div class="jumbotron jumbotron-fluid" id="skillPageJumbo"> 
       <div class="container" id="jumboText">
-        <h1 class="display-3">Find an Event Host by Category</h1>
+        <h1 class="display-3">Browse Volunteers</h1>
       </div>
     </div>
-
-
+  
     <div class="container" id="skillsPage">
-      <form id="host_category_search_form" method="GET" action="/select-hosts-by-category">
-        <div class="form-group">
-
-         <h3>Search for event hosts who are involved with work that interests you</h3><br>
-         Choose a category: 
-         <select id="search_host_category" name="host_category" form="host_category_search_form">
-           {{#each category}}
-           <option value='{{this.categoryname}}'>{{this.categoryname}}</option>
-           {{/each}}
-         </select>
-
-         <input type="submit" class="btn btn-success" id="host_category_search_submit" form="host_category_search_form" value="Search">
-       </div>
-     </form>
-
+      
+      <!--h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3--><br>
+      <div class ="container" id="skilled-vol-results">
+      {{#if host}}
+        <ul style="list-style: none;">
+          <li><h3><b><u>Event Hosts</u></b></h3></li>
+        {{#each host}}
+          <li><h5>
+            <form id="get_host_info{{this.hid}}" method="GET" action="/select-host-info">
+            <input type="hidden" form="get_host_info{{this.hid}}" id="get_host_info_id{{this.hid}}" name="hid" value="{{this.hid}}"/>
+            <input class="getInfo" type="submit" form="get_host_info{{this.hid}}" id="get_host_info_submit{{this.hid}}" value="{{this.hostorg}}"/>
+            </form>
+          </h5></li>
+        {{/each}}
+      {{else}}
+      No event hosts currently in the database. Our app has failed society.<br>
+      {{/if}}		
+      </div>
+    
      <br><br><br>
 
      <!-- Services -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h4>Help Out is a social platform for connecting volunteers with events.</h4>
+            <p> Help Out is a great way to connect and help with people near you.  Simply
+              Enter your address and the system will find local events that you can volunteer
+              for. Alternatively, you can post events and find volunteers near you. </p>
+          </div>
+
+          <div class="col-sm">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -81,6 +96,7 @@
 <div class="container" id="searchContainer">
 
 </div>
-</body>
 
+
+<script src="/forms.js"> </script>
 
