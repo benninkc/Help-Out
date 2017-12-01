@@ -50,6 +50,21 @@ app.get('/browseVolunteers', function(req,res,next){
   });
 });
 
+// Browse Hosts page
+app.get('/browseHosts', function(req,res,next){
+
+  var context = {};
+  mysql.pool.query('SELECT hid, hostorg FROM host', function(err, rows, fields){
+    if(err){
+        next(err);
+        return;
+    }
+    context.host = rows;
+    res.render('browseHosts', context);
+  });
+});
+
+
 // Find an Event Host by Category page
 app.get('/categoryHostSearch', function(req,res,next){
 
@@ -93,6 +108,29 @@ app.get('/select-hosts-by-category', function(req, res, next){
     context.categoryname = req.query.host_category;
     context.host = rows;
     res.render('categoryHostSearchResults', context);
+  });
+});
+
+// Event host info page
+app.get('/select-host-info', function(req, res, next){
+  var context = {};
+  mysql.pool.query('SELECT H.hostorg, H.email, C.categoryname FROM host H INNER JOIN category C ON C.cid = H.cid WHERE H.hid = ?', [req.query.hid], function (err, rows, fields){
+        if(err){
+        next(err);
+        return;
+      }
+
+      context.host = rows;
+	
+      mysql.pool.query('SELECT E.eventname FROM event E WHERE E.hid = ?', [req.query.hid], function (err, rows, fields){
+          if(err){
+          next(err);
+          return;
+        }
+
+        context.events = rows;
+ 	res.render('hostInformation', context);
+    });
   });
 });
 

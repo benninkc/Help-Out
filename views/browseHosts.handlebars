@@ -25,6 +25,9 @@
               <li class="nav-item active">
                 <a class="nav-link" href="/browseVolunteers">Browse Volunteers</a>
               </li>
+	      <li class="nav-item active">
+                <a class="nav-link" href="/browseHosts">Browse Event Hosts</a>
+              </li>
             </ul>
           </div>
 
@@ -54,19 +57,19 @@
       
       <!--h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3--><br>
       <div class ="container" id="skilled-vol-results">
-      {{#if volunteer}}
-	<ul style="list-style: none;">
-          <li><h3><b><u>Volunteer Name</u></b></h3></li>
-	{{#each volunteer}}
-	  <li><h5>
-            <form id="get_volunteer_info{{this.vid}}" method="GET" action="/select-volunteer-info">
-	    <input type="hidden" form="get_volunteer_info{{this.vid}}" id="get_vol_info_id{{this.vid}}" name="vid" value="{{this.vid}}"/>
-    	    <input class="getInfo" type="submit" form="get_volunteer_info{{this.vid}}" id="get_vol_info_submit{{this.vid}}" value="{{this.firstname}} {{this.lastname}}"/>
-	    </form>
-	  </h5></li>
-	{{/each}}
+      {{#if host}}
+        <ul style="list-style: none;">
+          <li><h3><b><u>Event Hosts</u></b></h3></li>
+        {{#each host}}
+          <li><h5>
+            <form id="get_host_info{{this.hid}}" method="GET" action="/select-host-info">
+            <input type="hidden" form="get_host_info{{this.hid}}" id="get_host_info_id{{this.hid}}" name="hid" value="{{this.hid}}"/>
+            <input class="getInfo" type="submit" form="get_host_info{{this.hid}}" id="get_host_info_submit{{this.hid}}" value="{{this.hostorg}}"/>
+            </form>
+          </h5></li>
+        {{/each}}
       {{else}}
-      No volunteers currently in the database. Our app has failed society.<br>
+      No event hosts currently in the database. Our app has failed society.<br>
       {{/if}}		
       </div>
     

@@ -46,18 +46,22 @@
 </div>
 
   <div class="container" id="eventInformationResult">
-    <h1>Volunteer Information</h1><hr>
+    <h1>Event Host Information</h1><hr>
       <ul class="list-group" id="eventInfoRes">
         <li class="list-group-item">
-	  <dt> Volunteer Name </dt>
-          <p>{{#each volunteer}}
-	  {{this.firstname}} {{this.lastname}}<br>
+	  <dt> Host Organization </dt>
+          <p>{{#each host}}
+	  {{this.hostorg}}<br>
 	  {{/each}}</p>
 	  <dt> Email </dt>
-	  <p>{{#each volunteer}}
+	  <p>{{#each host}}
 	  {{this.email}}<br>
 	  {{/each}}</p>
-	  <dt> Scheduled Events </dt>
+	  <dt> Organization Category </dt>
+	  <p>{{#each host}}
+	  {{this.categoryname}}<br>
+	  {{/each}}</p>
+	  <dt> Current Volunteer Events </dt>
 	  {{#if events}}
 	  <p>{{#each events}}
           {{this.eventname}} <br>
@@ -65,15 +69,7 @@
 	  {{else}}
 	  No events scheduled <br>
 	  {{/if}}
-          <dt> Skills </dt>
-	  {{#if skills}}
-	  <p>{{#each skills}}
-          {{this.skillname}} <br>
-	  {{/each}}</p>
-	  {{else}}
-	  No skills listed <br>
-          {{/if}}
-	</li>
+        </li>
     </ul>
   </div>
     <div class="container">
