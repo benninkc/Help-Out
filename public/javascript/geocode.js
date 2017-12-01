@@ -204,7 +204,7 @@ if(top.location.pathname === '/eventInformation') {
 	$(document).ready(function () {
 		document.getElementById("registerSubmit").addEventListener('click', function(event){
 			// Prevent the default form action (stops page refresh)
-			event.preventDefault();
+			//event.preventDefault();
 
 			var emailVal = document.getElementById('userEmail').value;
 			var eidVal = document.getElementById('eventEIDHolder').value;
