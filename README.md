@@ -9,7 +9,7 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 | View Volunteer Event | Create Event detail page to show to User || HW6 remainder |
 | Locational Search | Create Map page to view local events on a map, Link Mapped events to Event Detail page built above | Nathan | HW6 remainder |
 | Search for Skilled Volunteers | Create Web Page to show list of hyperlinked volunteers, Create Volunteer detail page (if we need one?) || HW6 remainder |
-| Volunteer Event Registration | Create Add “volunteer” button to Event detail page, Create many-to-many relationship table between volunteers and events, Volunteer button adds relationship to above table | Casey & Sarah | |
+| Volunteer Event Registration | Create Add “volunteer” button to Event detail page, Create many-to-many relationship table between volunteers and events, Volunteer button adds relationship to above table | Casey, Sarah | |
 | Category Search | Create MySQL Table of Categories, Add Category ID attribute as a foreign key to the Event Manager table, Create category query, Create web page to show list of hyperlinked event managers, Create event manager detail page | Aaron | |
 | Browse Results | Create page to display search query results, Use google map API to insert map, List hyperlinked results on page after map | | |
 | Browse Volunteers | Create query to get attribute information of volunteer, Create page to display attribute information |||
