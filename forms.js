@@ -10,12 +10,16 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 7500);
+app.set('port', 7550);
 app.use(express.static('public'));
 
 // Main page of database.
 app.get('/',function(req,res,next){
   res.render('home');
+});
+
+app.get('/eventpost', function(req,res,next){
+  res.render('eventPost');
 });
 
 // Gets sent information from geocode function

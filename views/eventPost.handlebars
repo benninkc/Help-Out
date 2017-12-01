@@ -1,0 +1,80 @@
+<!-- Header -->
+<div id="eventPostText">
+    <<header class="jumbotron jumbotron-fluid" id="homePageJumbo"> 
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-sm">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav" id="navElements">
+                <li class="nav-item active">
+                  <form action="/" method="get">
+                    <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                  </form>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="skillPageNavBtn" href="/skilledVolunteerSearch">Find Skilled Volunteer</a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="/categoryHostSearch">Find Host by Category</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row justify-content-end">
+          <div class="col-sm" >
+            <div class = "header-btn" id="loginBtn">
+              <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+        <div id="eventPostHeader" href="#">
+            {{eventPostHeader}}
+            <h1 id="eventPostHeader">Post an Event</h1>
+        </div>
+        </header>
+        <div id="formdiv" class="postEventForm">
+            <form id="posteventForm">
+                <label id="postlabel" >Event Name:</label>
+                    <input type="text" id="eventName" class="eventPost"> 
+                        <br>
+                <label id="postlabel">Event Date:</label>
+                    <input type="datetime" id="eventDate" class="eventPost"> 
+                        <br>
+                <label id="postlabel">Event <br>Description:</label>
+                <input type="text" id="textarea" class="eventPost">
+                    <br>
+                <label id="postlabel">Event <br>Details:</label>
+                <input type="text" id="textarea" class="eventPost">
+                    <br>
+                <p id="eventinfo">Event Location</p>
+                    <label id="postlabel">Street:</label>
+                        <input type="text" max="255" id="eventAddress" class="eventPost"> 
+                            <br>
+                    <label id="postlabel">City:</label>
+                        <input type="text" max="255" id="eventCity" class="eventPost"> 
+                            <br>
+                <label id="postlabel">Zip Code:</label>
+                        <input type="number" max="255" id="eventCity" class="eventPost"> 
+            </div>
+                        <div class="subbutton"><input type="submit" id="thisbutton"></div>
+                        
+
+            </form>
+
+        
+
+</div>
