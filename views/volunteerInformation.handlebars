@@ -1,0 +1,109 @@
+<div id="eventInformation">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" id="navMain">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav" id="navElements">
+              <li class="nav-item active">
+                <form action="/" method="get">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </form>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="skillPageNavBtn" href="/skilledVolunteerSearch">Find Skilled Volunteer</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/categoryHostSearch">Find Host by Category</a>
+              </li>
+	      <li class="nav-item active">
+                <a class="nav-link" href="/browseVolunteers">Browse Volunteers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row justify-content-end">
+        <div class="col-sm" >
+          <div class = "header-btn" id="loginBtn">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+  <div class="container" id="eventInformationResult">
+    <h1>Volunteer Information</h1><hr>
+      <ul class="list-group" id="eventInfoRes">
+        <li class="list-group-item">
+	  <dt> Volunteer Name </dt>
+          <p>{{#each volunteer}}
+	  {{this.firstname}} {{this.lastname}}<br>
+	  {{/each}}</p>
+	  <dt> Email </dt>
+	  <p>{{#each volunteer}}
+	  {{this.email}}<br>
+	  {{/each}}</p>
+	  <dt> Scheduled Events </dt>
+	  {{#if events}}
+	  <p>{{#each events}}
+          {{this.eventname}} <br>
+          {{/each}}</p>
+	  {{else}}
+	  No events scheduled <br>
+	  {{/if}}
+          <dt> Skills </dt>
+	  {{#if skills}}
+	  <p>{{#each skills}}
+          {{this.skillname}} <br>
+	  {{/each}}</p>
+	  {{else}}
+	  No skills listed <br>
+          {{/if}}
+	</li>
+    </ul>
+  </div>
+    <div class="container">
+    <!--button type="button" class="btn btn-success" data-toggle="modal" data-target="#volunteerModal">Volunteer!</button-->     
+    </div>
+    
+
+<!--div class="modal fade" id="volunteerModal" tabindex="-1" role="dialog" aria-labelledby="volunteerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter an email address to register for this event.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" id="userEmail" placeholder="Email">
+            <input type="hidden" class="form-control" id="eventEIDHolder" value="{{this.eid}}" name="eid">
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success" id="registerSubmit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div-->
+

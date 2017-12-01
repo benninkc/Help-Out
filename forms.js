@@ -36,6 +36,20 @@ app.get('/skilledVolunteerSearch', function(req,res,next){
   });
 });
 
+//Browse Volunteers page
+app.get('/browseVolunteers', function(req,res,next){
+
+  var context = {};
+  mysql.pool.query('SELECT vid, firstname, lastname FROM volunteer WHERE firstname IS NOT NULL', function(err, rows, fields){
+    if(err){
+        next(err);
+        return;
+    }
+    context.volunteer = rows;
+    res.render('browseVolunteers', context);
+  });
+});
+
 // Find an Event Host by Category page
 app.get('/categoryHostSearch', function(req,res,next){
 
@@ -83,10 +97,37 @@ app.get('/select-hosts-by-category', function(req, res, next){
 });
 
 //Individual volunteer info: unsure if needed
-/*app.get('/select-volunteer-info', function(req, res, next){
+app.get('/select-volunteer-info', function(req, res, next){
   var context = {};
-  mysql.pool.query('SELECT V.firstname, V.lastname, V.email
-});*/
+  mysql.pool.query('SELECT V.firstname, V.lastname, V.email FROM volunteer V WHERE V.vid = ?', [req.query.vid], function (err, rows, fields){
+	if(err){
+	next(err);
+	return;
+      }
+
+      context.volunteer = rows;
+    
+      mysql.pool.query('SELECT E.eventname FROM volunteer V INNER JOIN volunteer_event VE ON V.vid = VE.vid INNER JOIN event E ON VE.eid = E.eid WHERE V.vid = ?', [req.query.vid], function (err, rows, fields){
+          if(err){
+          next(err);
+          return;
+        }
+
+        context.events = rows;
+        //res.render('volunteerInformation', context);
+    
+        mysql.pool.query('SELECT S.skillname FROM volunteer V INNER JOIN volunteer_skill VS on V.vid = VS.vid INNER JOIN skill S ON VS.sid = S.sid WHERE V.vid = ?', [req.query.vid], function (err, rows, fields){
+            if(err){
+            next(err);
+            return;
+          }
+
+          context.skills = rows;
+	  res.render('volunteerInformation', context);
+      });
+    });
+  });
+});
 
 app.get('/locationSearch',function(req,res,next){
   var context = {};

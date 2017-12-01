@@ -233,6 +233,14 @@ INSERT INTO `volunteer_skill` (`vid`, `sid`) VALUES
 (1, 1),
 (1, 2);
 
+#
+# Data for tabe `volunteer_event`
+#
+
+INSERT INTO `volunteer_event` (`vid`, `eid`) VALUES
+(1, 1),
+(1, 2);
+
 ##########################################################
 #
 #  EDIT DATA (These should not be run manually)
