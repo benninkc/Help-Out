@@ -77,7 +77,7 @@ git clone https://github.com/natez56/CS361Project.git
 6) In your flip terminal type: git clone and then paste what you copied. Should look like:
 git clone https://github.com/natez56/CS361Project.git
 7) Now you should have a folder named CS361 in your directory.  Navigate to that folder.
-8) Use the command node form.js to run the required js.
+8) Use the command node forms.js to run the required js.
 9) Navigate to http://flip3.engr.oregonstate.edu:9005 to view the rendered page.
 10) Note if the page is not loading it is most likely because the port is in use to fix this follow these steps
 11) Open the forms.js file.
