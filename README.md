@@ -14,7 +14,7 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 | Browse Results | Create page to display search query results, Use google map API to insert map, List hyperlinked results on page after map | | |
 | Browse Volunteers | Create query to get attribute information of volunteer, Create page to display attribute information |||
 | Post Event | Create page with forms to enter in event information, Check if user is registered, Create a new Event in the Event Table with an associated Event Manager ID added as a foreign key |||
-| Delete Event | Create delete button on my events page | Create query to delete event from Event Table | Create success page to read and display query result |||
+| Delete Event | Create delete button on my events page | Create query to delete event from Event Table, Create success page to read and display query result |||
 
 
 ## Homework 6
