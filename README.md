@@ -11,7 +11,7 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 | Search for Skilled Volunteers | Create Web Page to show list of hyperlinked volunteers, Create Volunteer detail page (if we need one?) || HW6 remainder |
 | Volunteer Event Linkage | Create Add “volunteer” button to Event detail page, Create many-to-many relationship table between volunteers and events, Volunteer button adds relationship to above table | Casey, Sarah | |
 | Category Search | Create MySQL Table of Categories, Add Category ID attribute as a foreign key to the Event Manager table, Create category query, Create web page to show list of hyperlinked event managers, Create event manager detail page | Aaron | |
-| Browse Results | Create page to display search query results, Use google map API to insert map, List hyperlinked results on page after map | | High Priority from Sean |
+| Browse Results | Create page to display search query results, Use google map API to insert map, List hyperlinked results on page after map | Nathan | Complete |
 | Browse Volunteers | Create query to get attribute information of volunteer, Create page to display attribute information || High Priority from Sean |
 | Browse Hosts | Create query to get attribute information of event manager, Create page to display attribute information|| High Priority from Sean |
 | Post Event | Create page with forms to enter in event information, Create a new Event in the Event Table with an associated Event Manager ID added as a foreign key |Sarah | |
@@ -77,7 +77,7 @@ git clone https://github.com/natez56/CS361Project.git
 6) In your flip terminal type: git clone and then paste what you copied. Should look like:
 git clone https://github.com/natez56/CS361Project.git
 7) Now you should have a folder named CS361 in your directory.  Navigate to that folder.
-8) Use the command node form.js to run the required js.
+8) Use the command node forms.js to run the required js.
 9) Navigate to http://flip3.engr.oregonstate.edu:9005 to view the rendered page.
 10) Note if the page is not loading it is most likely because the port is in use to fix this follow these steps
 11) Open the forms.js file.
