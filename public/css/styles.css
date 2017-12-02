@@ -54,7 +54,7 @@ ul.tableLinks {
 	padding-top: 100px;
 }
 
-#skilled_volunteer_search_form {
+#skilled_volunteer_search_form, #host_category_search_form {
 	padding: 40px;
 }
 

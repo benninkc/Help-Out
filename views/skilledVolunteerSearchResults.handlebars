@@ -58,24 +58,24 @@
       <h3>Search results for volunteers with skill:  "{{this.skillname}}"</h3><br>
       <div class ="container" id="skilled-vol-results">
       {{#if volunteer}}
-      <table id="skilled-vol-table">
+      <h5><table id="skilled-vol-table" class="resultsTable">
 	<tr>
 	  <th>Name</th>
 	  <th>Email</th>
 	</tr>
 
-      <form id="get_volunteer_info" method="GET" action="/select-volunteer-info">
-	{{#each volunteer}}
-	<tr>
-	  <td>
-	    <input type="hidden" form="get_volunteer_info" id="get_vol_info_id" name="vid" value="{{this.vid}}"/>
-	    <!--input type="submit" form="get_volunteer_info" id="get_vol_info_submit" value="-->{{this.firstname}} {{this.lastname}}
-	  </td>
-	  <td>{{this.email}}</td>
-	</tr>
-	{{/each}}
-      </form>
-      </table>
+      {{#each volunteer}}
+        <form id="get_volunteer_info{{this.vid}}" method="GET" action="/select-volunteer-info">
+        <tr>
+          <td>
+            <input type="hidden" form="get_volunteer_info{{this.vid}}" id="get_volunteer_info_id{{this.vid}}" name="vid" value="{{this.vid}}"/>
+            <input class="getInfo" type="submit" form="get_volunteer_info{{this.vid}}" id="get_volunteer_info_submit{{this.vid}}" value="{{this.firstname}} {{this.lastname}}"/>
+          </td>
+          <td>{{this.email}}</td>
+        </tr>
+        </form>
+      {{/each}}
+      </table></h5>
       {{else}}
       No matching results for "{{this.skillname}}"<br>
       {{/if}}		
