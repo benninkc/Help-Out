@@ -222,26 +222,43 @@ app.get('/eventInformation',function(req,res,next){
 });
 
 app.post('/register',function(req,res,next){
-  mysql.pool.query('INSERT INTO `volunteer` (`email`) VALUES (?)', [req.body.email], function(err, result){
+  var vidVal;
+  var emailFound = false;
+
+  mysql.pool.query('SELECT `vid` FROM `volunteer` WHERE `email` = ?', [req.body.email], function(err, rows, fields){
     if(err){
       console.log("Error occurred.");
       next(err);
       return;
     }
-    mysql.pool.query('SELECT MAX(`vid`) AS `vid` FROM `volunteer`', function(err, rows, fields){
-      if(err){
-        next(err);
-        return;
-      }
-
-      var vidVal = rows[0].vid;
-      mysql.pool.query('INSERT INTO `volunteer_event` (`vid`, `eid`) VALUES (?, ?)', [vidVal, req.body.eid], function(err, result){
+    for (var key in rows) {
+      vidVal = rows[key].vid;
+      emailFound = true;
+    }
+    if (!emailFound) {
+      mysql.pool.query('INSERT INTO `volunteer` (`email`) VALUES (?)', [req.body.email], function(err, result){
         if(err){
           console.log("Error occurred.");
           next(err);
           return;
         }
+        mysql.pool.query('SELECT MAX(`vid`) AS `vid` FROM `volunteer`', function(err, rows, fields){
+          if(err){
+            next(err);
+            return;
+          }
+
+          var vidVal = rows[0].vid;
+        });
       });
+    }
+
+    mysql.pool.query('INSERT INTO `volunteer_event` (`vid`, `eid`) VALUES (?, ?)', [vidVal, req.body.eid], function(err, result){
+      if(err){
+        console.log("Error occurred.");
+        next(err);
+        return;
+      }    
     });
   });
 });

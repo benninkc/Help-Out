@@ -222,6 +222,7 @@ if(top.location.pathname === '/eventInformation') {
 					var response = JSON.parse(req.responseText);
 				} else {
 					console.log("Error in network request: " + req.statusText);
+					alert("You have already signed up for this event.");
 				}
 			});
 
