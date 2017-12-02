@@ -200,16 +200,16 @@ INSERT INTO `event` (`eid`, `hid`, `eventdate`, `eventname`, `eventdescription`,
 # Data for table 'host'
 #
 
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(1, 'Willamette River Keepers', 'cleanrivers@gmail.com');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(2, 'Red Cross Portland', 'events@redcross.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(3, 'Sisters of the Road', 'kitchen@sistersoftheroad.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(4, 'Portland Youth Soccer', 'kickit@portlandyouth.net');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(5, 'Alberta Neighborhood Association', 'goodneighbors@alberta.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(6, 'Potluck in the Park', 'potlucks@inpdx.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(7, 'Oregon Food Bank', 'pantry@feedoregon.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(8, 'Boy Scouts', 'troop45@scouts.or.us');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(9, 'Store to Door', 'shop@forseniors.org');
-INSERT INTO `host` (`hid`, `hostorg`, `email`) VALUES(10, 'Childrens Book Bank', 'books@childrensbank.org');
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Willamette River Keepers', 'cleanrivers@gmail.com', 1);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Red Cross Portland', 'events@redcross.org', 2);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Sisters of the Road', 'kitchen@sistersoftheroad.org', 3);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Portland Youth Soccer', 'kickit@portlandyouth.net', 4);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Alberta Neighborhood Association', 'goodneighbors@alberta.org', 5);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Potluck in the Park', 'potlucks@inpdx.org', 1);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Oregon Food Bank', 'pantry@feedoregon.org', 3);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Boy Scouts', 'troop45@scouts.or.us', 1);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Store to Door', 'shop@forseniors.org', 3);
+INSERT INTO `host` (`hostorg`, `email`, `cid`) VALUES('Childrens Book Bank', 'books@childrensbank.org', 5);
 # 10 records
 #
 # Data for table 'category'
