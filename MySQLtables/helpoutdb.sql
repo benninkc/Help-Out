@@ -29,7 +29,7 @@ SET autocommit=1;
 
 CREATE TABLE `event` (
   `eid` INTEGER NOT NULL AUTO_INCREMENT,
-  `hid` INTEGER DEFAULT 0,
+  `hid` INTEGER NOT NULL,
   `eventdate` DATETIME,
   `eventname` VARCHAR(50),
   `eventdescription` VARCHAR(255),
@@ -38,6 +38,8 @@ CREATE TABLE `event` (
   `eventlongitude` DOUBLE NULL DEFAULT 0,
   INDEX (`eid`),
   INDEX (`hid`),
+  CONSTRAINT `event_ibfk_1` FOREIGN KEY (`hid`)
+  REFERENCES `host` (`hid`) ON UPDATE CASCADE ON DELETE SET NULL,
   PRIMARY KEY (`eid`)
 ) ENGINE=myisam DEFAULT CHARSET=utf8;
 
@@ -56,6 +58,8 @@ CREATE TABLE `host` (
   `cid` INTEGER NOT NULL,
   INDEX (`hid`),
   INDEX (`cid`),
+  CONSTRAINT `host_ibfk_1` FOREIGN KEY (`cid`)
+  REFERENCES `category` (`cid`) ON UPDATE CASCADE ON DELETE SET NULL,
   PRIMARY KEY (`hid`)
 ) ENGINE=myisam DEFAULT CHARSET=utf8;
 
