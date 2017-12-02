@@ -13,8 +13,8 @@ Volunteering platform for matching small neighborhood volunteering opportunities
 | Category Search | Create MySQL Table of Categories, Add Category ID attribute as a foreign key to the Event Manager table, Create category query, Create web page to show list of hyperlinked event managers, Create event manager detail page | Aaron | Complete |
 | Browse Results | Create page to display search query results, Use google map API to insert map, List hyperlinked results on page after map | Nathan, Tanya | Complete |
 | Browse Volunteers** | Create query to get attribute information of volunteer, Create page to display attribute information |Aaron | Complete |
-| Browse Hosts** | Create query to get attribute information of event manager, Create page to display attribute information| Aaron, Tanya | In Progress |
-| Post Event | Create page with forms to enter in event information, Create a new Event in the Event Table with an associated Event Manager ID added as a foreign key |Sarah | |
+| Browse Hosts** | Create query to get attribute information of event manager, Create page to display attribute information| Aaron, Tanya | Complete |
+| Post Event | Create page with forms to enter in event information, Create a new Event in the Event Table with an associated Event Manager ID added as a foreign key |Sarah | Partial |
 | Delete Event** | Create delete button on my events page, Create query to delete event from Event Table, Create success page to read and display query result ||  |
 
 
